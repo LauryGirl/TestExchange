@@ -79,8 +79,8 @@
 	.entry {
 		width: 220px;
 		float:left;
-		margin: 25px;
-		height: 30px;
+		margin: 50px;
+		height: 40px;
     align-self: center;
   }
 
@@ -106,7 +106,13 @@
     width: 100%;
   }
 
+  .moneySelect{
+    min-width: 50px;
+    max-width: 100px;
+    width: 100%;
+  }
   .valueInput{
+    align-self: center;
     min-width: 50px;
     max-width: 80px;
     width: 100%;
