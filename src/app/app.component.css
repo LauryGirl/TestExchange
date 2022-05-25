@@ -54,8 +54,9 @@
     display: block;
     margin: 0px auto;
   }
-
-
+  button{
+    background-color: #0ab8a0;
+  }
   body{
 	  text-align: center;}
 
@@ -79,22 +80,11 @@
 		width: 220px;
 		float:left;
 		margin: 25px;
-		height: 10px;
-		background-repeat: no-repeat;
-		background-position:center;
+		height: 30px;
     align-self: center;
   }
 
-  button{
-    display:flexbox;
-    padding:auto;
-    width: 50px;
-    height: 20px;
-    background-color: #0ab8a0;
-    color: white;
-    border-radius: 40px;
-  }
-
+  
   #top{
     vertical-align:text-top;
   }
@@ -113,5 +103,11 @@
   }
 
   .form-container > * {
+    width: 100%;
+  }
+
+  .valueInput{
+    min-width: 50px;
+    max-width: 80px;
     width: 100%;
   }

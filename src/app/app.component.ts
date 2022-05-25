@@ -1,6 +1,6 @@
 import { NgForOf } from '@angular/common';
 import { ChangeDetectorRef, Component} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Currencies } from './models/currencies';
 import { Exchange } from './models/exchange';
 import { CurrencieServiceService } from './services/currencie-service.service';
@@ -17,16 +17,16 @@ export class AppComponent {
   public countCorrect!:FormGroup;
   public count_:number = 1;
   public result_:string = '';
-  public optMoney1:string = '0';
-  public optMoney2:string = '0';
+  public optMoney1:string = "";
+  public optMoney2:string = "";
   public optCount:number= 1;
-  public money1:string = "";
-  public money2:string = "";
+  public money1:string = "USD";
+  public money2:string = "EUR";
   public descripcion: string[] = [];
   public exchangeValue: number[] = [0];
 
   public start = false;
-  public exchangeCalculate = false;
+  public exchangeCalculate = true;
 
   public notFound = false;
   public exchange!:Exchange;
@@ -35,9 +35,12 @@ export class AppComponent {
   public jsonString1!: string;
   public jsonString2!: string;
 
+  public money1Control = new FormControl('', Validators.required);
+  public money2Control = new FormControl('', Validators.required);
+
   constructor(private formBuilder: FormBuilder, private exchangeService:ExchangeService, private currenciesService: CurrencieServiceService, private cdr: ChangeDetectorRef){
     this.start = false;
-    this.exchangeCalculate = false;
+    this.exchangeCalculate = true;
   }
 
   public ngOnInit(){
@@ -101,30 +104,36 @@ export class AppComponent {
 
   onCount(value:number){
     if(value != 0 && this.count_ != value){
-      this.exchangeCalculate = false;
+      //this.exchangeCalculate = false;
       this.count_ = value;
     }
-    /*else{
-      alert('Field required');
-    }*/
   }
 
   onMoney1(){
-    if (this.money1 != this.optMoney1)
+    if (this.money1 != "" && this.money1 != this.optMoney1)
     {
       this.exchangeCalculate = false;
-      this.money1 = this.optMoney1;
+      this.optMoney1 = this.money1;
+
+      if(this.money2 != ""){
+        this.solveButton();
+      }
     }
     
   }
   onMoney2(){
-    if(this.money2 != this.optMoney2){
+    if(this.money2 != "" && this.money2 != this.optMoney2){
       this.exchangeCalculate = false;
-      this.money2 = this.optMoney2;  
+      this.optMoney2 = this.money2;
+
+      if(this.money1 != ""){
+        this.solveButton();
+      }
     }
   }
+
   swapButton(){
-    if(this.money1 != "" && this.money2 != "" && this.count_ != 0){
+    if(this.money1 != "" && this.money2 != ""){
       var swap = this.money1;
       this.money1 = this.money2;
       this.money2 = swap;
@@ -132,14 +141,13 @@ export class AppComponent {
       this.solveButton()
     }
   }
+
   solveButton(){
-    if(this.money1 == this.money2) {
+    if(this.optMoney1 == this.optMoney2) {
       this.exchangeCalculate = true;
     }
-
-    else if(!this.exchangeCalculate && this.money1 != "" && this.money2 != "" && this.count_ != 0){
+    else if(this.money1 != "" && this.money2 != "" && !this.exchangeCalculate){
       this.exchangeCalculate = true;
-
       let value = 'latest?amount=1' + '&from=' + this.money1 +  '&to=' + this.money2;
       this.exchangeService.onCount(value).subscribe((exchangeFromTheApi: Exchange) =>
       {
@@ -150,7 +158,7 @@ export class AppComponent {
         console.log(err);
         this.notFound = true;
       });  
-    }      
+    }
   }
 
   exchangeSolve(count:string){

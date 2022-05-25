@@ -36,7 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatPseudoCheckboxModule,
     MatOptionModule,
     MatLineModule,
-    MatSelectModule
+    MatSelectModule,
     //MatOptionSelectionChange
   ],
   providers: [],

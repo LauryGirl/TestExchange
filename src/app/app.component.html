@@ -1,4 +1,5 @@
 <body>
+
   <div fxLayout="row" fxLayoutAlign="start center">
     <div class="wrapper">
 
@@ -33,13 +34,19 @@
 
         <div class="entry">
           <div class="top">
-            <mat-form-field appearance="outline">
-              <mat-select [(value)]="optMoney1">
-                <mat-option *ngFor="let opt of descripcion" [value]="opt">
-                  {{opt}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <form>
+              <mat-form-field appearance="outline">
+                <mat-label>Select an money</mat-label>
+                <mat-select  [(ngModel)]="money1" name ="money">
+                  <mat-option *ngFor="let money of descripcion" [value]="money">
+                    {{money}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="money1Control.hasError('required')">
+                  Please choose an money
+                </mat-error> 
+              </mat-form-field>  
+            </form>
           </div>
           <td>{{onMoney1()}}</td>
         </div>
@@ -48,17 +55,19 @@
 
         <div class="entry" [formGroup]="countCorrect">
           <div class="top">
-            <label for="count"></label>
-            <input matInput placeholder="Amount" name="count" #count formControlName="count" type="number" />
-            <td>
-              {{exchangeSolve(count.value)}}
-            </td>  
+            <mat-form-field class="valueInput" appearance="fill">
+              <label for="count">Amount</label>
+              <input matInput placeholder="Amount" name="count" #count formControlName="count" type="number" value="1" />
+              <td>
+                {{exchangeSolve(count.value)}}
+              </td>    
+            </mat-form-field>
         </div>
         </div>
 
         <div class="entry">
           <div class="medium">
-            <button mat-flat-button color="green" (click)="swapButton()"><b>Swap</b></button>
+            <button mat-raised-button color="warn" (click)="swapButton()"><b>Swap</b></button>
           </div>
         </div>
 
@@ -72,16 +81,21 @@
         </div> 
 
         
-
         <div class="entry">
           <div class="top">
-            <mat-form-field appearance="outline">
-              <mat-select  [(value)]="optMoney2">
-                <mat-option *ngFor="let opt of descripcion" [value]="opt">
-                  {{opt}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <form>
+              <mat-form-field appearance="outline">
+                <mat-label>Select an money</mat-label>
+                <mat-select  [(ngModel)]="money2" name ="money">
+                  <mat-option *ngFor="let money of descripcion" [value]="money">
+                    {{money}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="money1Control.hasError('required')">
+                  Please choose an money
+                </mat-error> 
+              </mat-form-field>  
+            </form>
           </div>
           <td>{{onMoney2()}}</td>
         </div>
@@ -94,10 +108,6 @@
         </div> 
       
       </ng-container>
-
-      <td>
-        {{solveButton()}}
-      </td>
 
       <ng-container *ngIf="exchange">
         <div>
