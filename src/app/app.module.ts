@@ -15,6 +15,7 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatOptionModule } from '@angular/material/core';
 import { MatLineModule } from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list'
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {MatSelectModule} from '@angular/material/select';
     MatOptionModule,
     MatLineModule,
     MatSelectModule,
+    MatGridListModule
     //MatOptionSelectionChange
   ],
   providers: [],

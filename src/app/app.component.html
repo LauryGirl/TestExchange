@@ -31,64 +31,64 @@
           <p>{{takeDescription()}} </p>
         </td>
         
-        <mat-form-field class="entry top" appearance="outline">
-          <mat-label>Select an money</mat-label>
-          <mat-select  [(ngModel)]="money1" name ="money" value="USD">
-            <mat-option *ngFor="let money of descripcion" [value]="money">
-              {{money}}
-            </mat-option>
-          </mat-select>
-            <mat-error *ngIf="money1Control.hasError('required')">
-              Please choose an money
-            </mat-error>
-          <td>{{onMoney1()}}</td>
-          <h4><b>{{money1}}</b></h4>
-        </mat-form-field>
-        
+        <mat-grid-list cols="2" rowHeight="50px">
+          <mat-grid-tile>
+            <mat-form-field class="select-input" appearance="outline">
+              <mat-label>Select an money</mat-label>
+              <mat-select  [(ngModel)]="money1" name ="money" value="USD">
+                <mat-option *ngFor="let money of descripcion" [value]="money">
+                  {{money}}
+                </mat-option>
+              </mat-select>
+                <mat-error *ngIf="money1Control.hasError('required')">
+                  Please choose an money
+                </mat-error>
+              <td>{{onMoney1()}}</td>
+              <h4><b>{{money1}}</b></h4>
+            </mat-form-field>    
+          </mat-grid-tile>
 
-        <mat-form-field class="valueInput entry top" appearance="fill">
-          <input matInput placeholder="Amount" value="1" name="count" #count formControlName="count" type="number" />
-            <td>
-              {{exchangeSolve(count.value)}}
-            </td>    
-        </mat-form-field>
+          <mat-grid-tile>
+            <mat-form-field class="valueInput" appearance="fill">
+              <input matInput placeholder="Amount" value="1" name="count" #count formControlName="count" type="number" />
+                <td>
+                  {{exchangeSolve(count.value)}}
+                </td>    
+            </mat-form-field>
+          </mat-grid-tile>
 
-
-        <div class="entry">
-          <div class="medium">
+          <mat-grid-tile>
             <button mat-raised-button color="warn" (click)="swapButton()"><b>Swap</b></button>
-          </div>
-        </div>
+          </mat-grid-tile>
+        
+ 
+        <mat-grid-tile>
+          <div class="textMarket">
+            <h4> <b>{{exchangeTextEquals()}}</b></h4>
+          </div>     
+        </mat-grid-tile>
+        
+        <mat-grid-tile>
+          <mat-form-field  class="select-input" appearance="outline">
+            <mat-label>Select an money</mat-label>
+            <mat-select  [(ngModel)]="money2" name ="money" value="EUR">
+              <mat-option *ngFor="let money of descripcion" [value]="money">
+                {{money}}
+              </mat-option>
+            </mat-select>
+              <mat-error *ngIf="money1Control.hasError('required')">
+                Please choose an money
+              </mat-error>
+            <td>{{onMoney2()}}</td>
+            <h4><b>{{money2}}</b></h4>
+          </mat-form-field>  
+        </mat-grid-tile>
 
-      
-        <div class="entry">
-          <div class="medium">
-            <div class="textMarket">
-              <h4> <b>{{exchangeTextEquals()}}</b></h4>
-            </div>  
-          </div>
-        </div> 
 
-        <mat-form-field class="entry end" appearance="outline">
-          <mat-label>Select an money</mat-label>
-          <mat-select  [(ngModel)]="money2" name ="money" value="EUR">
-            <mat-option *ngFor="let money of descripcion" [value]="money">
-              {{money}}
-            </mat-option>
-          </mat-select>
-            <mat-error *ngIf="money1Control.hasError('required')">
-              Please choose an money
-            </mat-error>
-          <td>{{onMoney2()}}</td>
-          <h4><b>{{money2}}</b></h4>
-        </mat-form-field>
-
-        <div class="entry">
-          <div class="end">
-            <h4> <b>{{exchangeText()}}</b></h4>
-          </div>
-        </div> 
-      
+        <mat-grid-tile>
+          <h4> <b>{{exchangeText()}}</b></h4>
+        </mat-grid-tile>
+      </mat-grid-list>
       </ng-container>
 
       <ng-container *ngIf="exchange">

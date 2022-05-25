@@ -182,10 +182,10 @@ export class AppComponent {
   exchangeText(){
     if(this.money1 == this.money2 && this.money1 != "" && this.money1 !="0")
     {
-      return this.count_;
+      return Math.round((this.count_ + Number.EPSILON) * 100) / 100;
     }
     if(this.money1 != "" && this.money2 != "" && this.count_ != 0){
-      return (+this.result_ * this.count_);
+      return Math.round(((+this.result_ * this.count_) + Number.EPSILON) * 100) / 100;
     }
 
     return "";

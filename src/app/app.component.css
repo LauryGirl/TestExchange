@@ -56,6 +56,11 @@
   }
   button{
     background-color: #0ab8a0;
+    color:white;
+    border: white;
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
   }
   body{
 	  text-align: center;}
@@ -84,7 +89,18 @@
     align-self: center;
   }
 
+  mat-grid-tile{
+    background: white;
+    align-self: center;
+  }
   
+  .select-input{
+    align-self: center;
+    min-width: 30px;
+    max-width: 80px;
+    width: 80%;
+  }
+
   #top{
     vertical-align:text-top;
   }
