@@ -31,7 +31,7 @@
           <p>{{takeDescription()}} </p>
         </td>
         
-        <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-list cols="2" rowHeight="60px">
           <mat-grid-tile>
             <mat-form-field class="select-input" appearance="outline">
               <mat-label>Select an money</mat-label>
@@ -49,7 +49,7 @@
           </mat-grid-tile>
 
           <mat-grid-tile>
-            <mat-form-field class="valueInput" appearance="fill">
+            <mat-form-field class="valueInput" appearance="outline">
               <input matInput placeholder="Amount" value="1" name="count" #count formControlName="count" type="number" />
                 <td>
                   {{exchangeSolve(count.value)}}
@@ -69,7 +69,7 @@
         </mat-grid-tile>
         
         <mat-grid-tile>
-          <mat-form-field  class="select-input" appearance="outline">
+          <mat-form-field appearance="outline" class="select-input">
             <mat-label>Select an money</mat-label>
             <mat-select  [(ngModel)]="money2" name ="money" value="EUR">
               <mat-option *ngFor="let money of descripcion" [value]="money">
@@ -96,7 +96,6 @@
           <p>{{takeResult()}}</p>
         </div>
 
-  
       </ng-container>
             
     </div>

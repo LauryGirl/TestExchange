@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MAT_FORM_FIELD, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatPseudoCheckboxModule, MatRippleModule } from '@angular/material/core';
 import { MatCommonModule } from '@angular/material/core';
 import { MatOptionModule } from '@angular/material/core';
@@ -41,7 +41,7 @@ import {MatGridListModule} from '@angular/material/grid-list'
     MatGridListModule
     //MatOptionSelectionChange
   ],
-  providers: [],
+  providers: [{provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

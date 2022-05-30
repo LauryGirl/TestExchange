@@ -97,8 +97,11 @@
   .select-input{
     align-self: center;
     min-width: 30px;
-    max-width: 80px;
-    width: 80%;
+    max-width: 60px;
+    width: 60%;
+    height: auto;
+    background-color:aliceblue;
+    border-color: #333;
   }
 
   #top{
@@ -126,10 +129,12 @@
     min-width: 50px;
     max-width: 100px;
     width: 100%;
+    height: 50px;
   }
   .valueInput{
     align-self: center;
     min-width: 50px;
     max-width: 80px;
     width: 100%;
+    height: 40px;
   }
